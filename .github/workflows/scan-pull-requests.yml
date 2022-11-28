@@ -1,13 +1,10 @@
 name: "Frogbot Scan Pull Requests"
-on: workflow_dispatch
-# on:
-#   schedule:
-#     - cron: '5 * * * *'
+on:
+  schedule:
+    - cron: '*/5 * * * *'
 permissions:
   pull-requests: write
   contents: write
-  issues: write
-  security-events: write
 jobs:
   scan-pull-requests:
     runs-on: ubuntu-latest
@@ -32,34 +29,14 @@ jobs:
           # The GitHub token automatically generated for the job
           JF_GIT_TOKEN: ${{ secrets.GH_PAT }}
 
-          JF_GIT_PROVIDER: 'github'
-          JF_GIT_OWNER: 'omerzi'
-          # Uncomment the below options if you'd like to use them.
+          # [Mandatory if JF_USER and JF_PASSWORD are not provided]
+          # JFrog access token with 'read' permissions on Xray service
+          JF_ACCESS_TOKEN: ${{ secrets.JF_ACCESS_TOKEN }}
 
           # [Optional, default: https://api.github.com]
           # API endpoint to GitHub
           # JF_GIT_API_ENDPOINT: https://github.example.com
 
-          # [Mandatory if JF_USER and JF_PASSWORD are not provided]
-          # JFrog access token with 'read' permissions on Xray service
-          JF_ACCESS_TOKEN: ${{ secrets.JF_ACCESS_TOKEN }}
-
-          # [Optional, default: "."]
-          # Relative path to the project in the git repository
-          # JF_WORKING_DIR: path/to/package.json/dir
-
-          # [Optional]
-          # Xray Watches. Learn more about them here: https://www.jfrog.com/confluence/display/JFROG/Configuring+Xray+Watches
-          # JF_WATCHES: <watch-1>,<watch-2>...<watch-n>
-
-          # [Optional]
-          # JFrog project. Learn more about it here: https://www.jfrog.com/confluence/display/JFROG/Projects
-          # JF_PROJECT: <project-key>
-
-          # [Optional, default: "FALSE"]
-          # Displays all existing vulnerabilities, including the ones that were added by the pull request.
-          # JF_INCLUDE_ALL_VULNERABILITIES: "TRUE"
-          
-          # [Optional, default: "TRUE"]
-          # Fails the Frogbot task if any security issue is found.
-          # JF_FAIL: "FALSE"
+          # Predefined - no need to set the following environment variables.
+          JF_GIT_PROVIDER: 'github'
+          JF_GIT_OWNER: $GITHUB_REPOSITORY_OWNER
