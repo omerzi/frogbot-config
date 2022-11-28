@@ -30,6 +30,7 @@ jobs:
           # The GitHub token automatically generated for the job
           JF_GIT_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
+          JF_GIT_PROVIDER: 'github'
           # Uncomment the below options if you'd like to use them.
 
           # [Optional, default: https://api.github.com]
