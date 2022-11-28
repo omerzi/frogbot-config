@@ -4,7 +4,7 @@
 
 - repoName: "npm_example_project" # Repository name
   includeAllVulnerabilities: true # Displays all existing vulnerabilities, including the ones that were added by the pull request. [Default: false]
-  failOnSecurityIssues: true # Fails the Frogbot task if any security issue is found. [Default: true]
+  failOnSecurityIssues: false # Fails the Frogbot task if any security issue is found. [Default: false]
   projects: # List of package manager related projects (e.g. npm, pip, maven projects) with their relevant working directories, installation command, etc.
     - installCommandName: "npm" # Installation command (e.g. npm, maven). Manda
       installCommandArgs: # List of arguments to the installation command (e.g. install, i)
