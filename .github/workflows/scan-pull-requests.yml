@@ -45,7 +45,7 @@ jobs:
       # - name: Setup Gradle
       #   uses: gradle/gradle-build-action@v2
 
-      - uses: ./frogbot scan-pull-requests
+      - run: ./frogbot scan-pull-requests
         env:
           # [Mandatory]
           # JFrog platform URL (This functionality requires version 3.29.0 or above of Xray)
