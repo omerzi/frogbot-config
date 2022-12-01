@@ -11,6 +11,10 @@ jobs:
 
       # Install prerequisites
 
+      - uses: actions/setup-go@v2
+        with:
+          go-version: 1.19.x
+      
       # Uncomment if you have a Pip/Pipenv/Poetry project
       # - uses: actions/setup-python@v4
       #   with:
@@ -35,11 +39,11 @@ jobs:
       #     dotnet-version: "3.1.x"
 
       # Uncomment if you have Maven/Gradle project
-      - name: Set up Java
-        uses: actions/setup-java@v3
-        with:
-          java-version: "11"
-          distribution: "temurin"
+      # - name: Set up Java
+      #   uses: actions/setup-java@v3
+      #   with:
+      #     java-version: "11"
+      #     distribution: "temurin"
 
       # Uncomment if you have Gradle project
       # - name: Setup Gradle
