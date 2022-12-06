@@ -2,12 +2,16 @@
 # It is important to note that 'scan-pull-request' and 'create-fix-pull-request' only work on a single repository, thus only the first repository in the configuration file will be used.
 # Please use 'scan-pull-requests' command to apply the multiple repository configurations.
 
-- repoName: "npm_example_project" # Repository name
+- gitParams: # List of git parameters to base the scan on
+    repoName: "npm_example_project" # Name of the repository to scan. Mandatory.
+    branches: # List of branches to scan. Mandatory for scan and fix repositories commands.
+      - main
   includeAllVulnerabilities: true # Displays all existing vulnerabilities, including the ones that were added by the pull request. [Default: false]
   failOnSecurityIssues: false # Fails the Frogbot task if any security issue is found. [Default: false]
   projects: # List of package manager related projects (e.g. npm, pip, maven projects) with their relevant working directories, installation command, etc.
     - installCommandName: "npm" # Installation command (e.g. npm, maven). Manda
       installCommandArgs: # List of arguments to the installation command (e.g. install, i)
         - "i"
-- repoName: "go_example_project" # Repository name
+- gitParams: # List of git parameters to base the scan on
+    repoName: "go_example_project" # Name of the repository to scan. Mandatory.
   includeAllVulnerabilities: true # Displays all existing vulnerabilities, including the ones that were added by the pull request. [Default: false]
