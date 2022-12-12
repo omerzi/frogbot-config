@@ -15,9 +15,7 @@ pipelines:
           inputResources:
             - name: cron_trigger
           environmentVariables:
-            # [Mandatory only for projects which use npm, yarn 2, NuGet and .NET to download their dependencies]
-            # The command that installs the project dependencies (e.g "npm i", "nuget restore" or "dotnet restore")
-            JF_INSTALL_DEPS_CMD: ""
+
             # [Mandatory]
             # JFrog platform URL
             JF_URL: $int_jfrogPlatform_url
@@ -34,10 +32,8 @@ pipelines:
             JF_GIT_API_ENDPOINT: $int_github_url
             # [Mandatory]
             # GitHub organization namespace
-            JF_GIT_OWNER: ""
-            # [Mandatory]
-            # GitHub repository name
-            JF_GIT_REPO: ""
+            JF_GIT_OWNER: "omerzi"
+
             # Uncomment the below options if you'd like to use them.
             # [Optional, default: "."]
             # Relative path to the project in the git repository
@@ -59,7 +55,6 @@ pipelines:
             # JF_USE_WRAPPER: "TRUE"
         execution:
           onExecute:
-            - curl -fLg "https://releases.jfrog.io/artifactory/frogbot/v2/[RELEASE]/getFrogbot.sh" | sh
             - ./frogbot scan-pull-requests
             # For Windows runner:
             # - iwr https://releases.jfrog.io/artifactory/frogbot/v2/[RELEASE]/frogbot-windows-amd64/frogbot.exe -OutFile .\frogbot.exe
