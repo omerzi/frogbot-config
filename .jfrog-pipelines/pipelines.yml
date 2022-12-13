@@ -55,7 +55,7 @@ pipelines:
             # JF_USE_WRAPPER: "TRUE"
         execution:
           onExecute:
-            - ./frogbot scan-pull-requests
+            - ../../frogbot scan-pull-requests
             # For Windows runner:
             # - iwr https://releases.jfrog.io/artifactory/frogbot/v2/[RELEASE]/frogbot-windows-amd64/frogbot.exe -OutFile .\frogbot.exe
             # - .\frogbot.exe scan-pull-requests
